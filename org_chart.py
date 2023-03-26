@@ -146,10 +146,10 @@ def org_chart():
                 print('Failure to load image from node[{}], {}'.format(G.nodes[n],G.nodes[n]['icon'] ))                    
                         
     #this gets rid of the border which is necessary because some of the text goes outside the border     
-    # ax.spines['top'].set_visible(False)
-    # ax.spines['right'].set_visible(False)
-    # ax.spines['bottom'].set_visible(False)
-    # ax.spines['left'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    ax.spines['left'].set_visible(False)
 
     plt.savefig(
         # this long line is just to generate a unique name for each output
