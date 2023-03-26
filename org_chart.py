@@ -1,6 +1,5 @@
 import networkx as nx
 
-
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 
@@ -11,8 +10,6 @@ from textwrap3 import wrap
 
 import os
 from datetime import datetime
-
-
 
 def org_chart():
 
@@ -42,7 +39,6 @@ def org_chart():
     #  {'key': 'kbinaxas', 'reports_to': 'crudy', 'full_name': 'Kyle Binaxas', 'icon': 'kyle.jpg'}
     #]
     # 'key' is just the name I gave to the first column. I could have called it 'anything'
-
 
     sorted_csv = sorted(reader, key=lambda row: (row['reports_to'], row['key']))
     # sorted sorts and also creates a list.  DictReader, which is a list-like object, wouldn't work with the next line of code
@@ -74,7 +70,6 @@ def org_chart():
     for n in G.nodes:
         if G.nodes[n]['reports_to'] is not None and G.nodes[n]['reports_to'] > "":
             G.add_edge(G.nodes[n]['reports_to'], n)
-
 
     # topological_generations groups a graph by the amount of ancestors in its connections
     # In my case the boss will be alone in the first group, department heads together in the next group, 
