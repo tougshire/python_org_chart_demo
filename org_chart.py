@@ -9,6 +9,9 @@ import PIL
 from textwrap3 import wrap
 
 import os
+
+import win32ui
+
 from datetime import datetime
 
 def org_chart():
@@ -151,11 +154,20 @@ def org_chart():
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
 
+    dlg = win32ui.CreateFileDialog(0)
+    dlg.SetOFNInitialDir('~')
+    dlg.DoModal()
+
     plt.savefig(
-        # this long line is just to generate a unique name for each output
-        os.path.join('output','org_chart_{}.png'.format(datetime.strftime(datetime.today(),'%Y%m%d%H%M%S%f'))), 
-        format='png', 
+        dlg.GetPathName(),
+        format='png',
         dpi=config["dpi"]
     )
+    # plt.savefig(
+    #     # this long line is just to generate a unique name for each output
+    #     os.path.join('output','org_chart_{}.png'.format(datetime.strftime(datetime.today(),'%Y%m%d%H%M%S%f'))), 
+    #     format='png', 
+    #     dpi=config["dpi"]
+    # )
 
 org_chart()
